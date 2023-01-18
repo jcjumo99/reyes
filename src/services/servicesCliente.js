@@ -9,16 +9,16 @@ const getAll = async () => {
 const createCliente = async (body)=>{
     return await axios.post(`${URI}/cliente`,body)
 }
-// const deleteGanado = async (id)=>{
-//     return await axios.delete(`${URI}/toro/${id}`)
-// }
+const deleteCliente = async (id)=>{
+    return await axios.delete(`${URI}/cliente/${id}`)
+}
 
-// const getId = async (id)=>{
-//     return await axios.get(`${URI}/toroId/${id}`)
-// }
-// const updateGanado = async (idToro,body)=>{
-//     return await axios.post(`${URI}/toroId/${idToro}`,body)
-// }
+const getId = async (id)=>{
+    return await axios.get(`${URI}/clienteId/${id}`)
+}
+const updateCliente = async (idCliente,body)=>{
+    return await axios.post(`${URI}/cliente/${idCliente}`,body)
+}
 
 
-export default {getAll,createCliente}
+export default {getAll,createCliente,deleteCliente,getId,updateCliente}

@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
-import servicesCliente from "../../services/servicesCliente";
+import servicesProveedores from "../../services/servicesProveedores";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
@@ -19,54 +19,56 @@ const customStyles = {
   },
 };
 
-const Clientes = () => {
+const Proveedores = () => {
   const navigate = useNavigate();
-  const [idCliente, setIdCliente]=useState(0);
-  const [cliente, setCliente] = useState("");
-  const [clientesTotal, setClientesTotal] = useState("");
+  const [idProveedores, setIdProveedores]=useState(0);
+  const [proveedores, setProveedores] = useState("");
+  const [proveedoresTotal, setProveedoresTotal] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
   //const [idToro, setIdToro]=useState(0)
-  const clienteRef = useRef(true);
-  const ClientePage = 15;
-  const pagesVisited = pageNumber * ClientePage;
+  const proveedoresRef = useRef(true);
+  const ProveedoresPage = 15;
+  const pagesVisited = pageNumber * ProveedoresPage;
+
 
   useEffect(() => {
-    if (clienteRef.current) {
-      clienteRef.current = false;
-      getClientes();
+    if (proveedoresRef.current) {
+        proveedoresRef.current = false;
+      getProveedores();
     }
   }, []);
 
-  const getClientes = async () => {
-    const response = await servicesCliente.getAll();
+  const getProveedores = async () => {
+    const response = await servicesProveedores.getAll();
     console.log("rss",response);
     if (response.status === 200) {
-      setClientesTotal(response.data.data);
-      setCliente(response.data.data);
+      setProveedoresTotal(response.data.data);
+      setProveedores(response.data.data);
     }
   };
-  const displayClientes = cliente.slice(pagesVisited, pagesVisited + ClientePage);
+  const displayProveedores = proveedores.slice(pagesVisited, pagesVisited + ProveedoresPage);
 
   const eliminarModal = async (id) => {
+    console.log("id",id)
     setIsOpen(true);
-    setIdCliente(id)
+    setIdProveedores(id)
   };
 
   const eliminar = async ()=>{
-    console.log(idCliente)
-    await servicesCliente.deleteCliente(idCliente);
-    getClientes();
+    console.log(idProveedores)
+    await servicesProveedores.deleteProveedor(idProveedores);
+    getProveedores();
     setIsOpen(false);
     toast.success("Se elimino correctamente");
   }
 
 
   const editar = async (id) => {
-    navigate(`/editarCliente/${id}`);
+    navigate(`/editarProveedor/${id}`);
   };
 
-  const pageCount = Math.ceil(clientesTotal.length / ClientePage);
+  const pageCount = Math.ceil(proveedoresTotal.length / ProveedoresPage);
 
   const changePage = ({ selected }) => {
     setPageNumber(selected);
@@ -80,9 +82,9 @@ const Clientes = () => {
       <div>
         <ToastContainer type="info" theme="dark" />
       </div>
-      <Link to={"/nuevoCliente"}>
+      <Link to={"/nuevoProveedor"}>
         <button type="button" className="btn btn-primary">
-          + Nuevo Cliente
+          + Nuevo Proveedor
         </button>
       </Link>
       {
@@ -127,8 +129,8 @@ const Clientes = () => {
           </tr>
         </thead>
         <tbody>
-          {Array.isArray(displayClientes)
-            ? displayClientes.map((element, index) => {
+          {Array.isArray(displayProveedores)
+            ? displayProveedores.map((element, index) => {
                 return (
                   <tr key={index}>
                     <td>{index}</td>
@@ -140,7 +142,7 @@ const Clientes = () => {
                       <button
                         style={{ border: "none" }}
                         onClick={() => {
-                          editar(element.idCliente);
+                          editar(element.idProveedor);
                         }}
                       >
                         <i
@@ -153,7 +155,7 @@ const Clientes = () => {
                       <button
                         style={{ border: "none" }}
                         onClick={() => {
-                          eliminarModal(element.idCliente);
+                          eliminarModal(element.idProveedor);
                         }}
                       >
                         <i className="fa-solid fa-trash" color="red"></i>
@@ -180,4 +182,4 @@ const Clientes = () => {
     </div>
   );
 };
-export default Clientes;
+export default Proveedores;

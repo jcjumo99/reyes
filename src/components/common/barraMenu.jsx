@@ -59,6 +59,9 @@ export const BarraMenu = ({ children }) => {
                 <Link className="nav-link" to={"/clientes"}>
                   Clientes
                 </Link>
+                <Link className="nav-link" to={"/proveedor"}>
+                  Proveedores
+                </Link>
               </div>
             </div>
             <div className="sb-sidenav-footer">
