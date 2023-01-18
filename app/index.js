@@ -7,6 +7,7 @@ const path = require ('path');
 //imports
 const toroRoute = require('./routes/toro.route')
 const clienteRoute = require('./routes/cliente.route')
+const proveedoresRoute = require('./routes/proveedor.route')
 
 //connection
 require('./connection/mysql');
@@ -20,6 +21,7 @@ app.use(cors());
 //Routes
 app.use(toroRoute);
 app.use(clienteRoute);
+app.use(proveedoresRoute);
 
 
 //app.use('/public',express.static())

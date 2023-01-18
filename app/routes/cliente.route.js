@@ -6,9 +6,9 @@ const clienteController = require('../controllers/cliente.controller');
 
 route.get('/cliente',clienteController.getCliente);
 route.post('/cliente',clienteController.CreateCliente)
-//route.delete('/toro/:id',toroController.deleteToro)
-//route.get('/toroId/:id',toroController.GetToroId)
-//route.post('/toroId/:idToro',multer,toroController.UpdateToro)
-//route.post('/toroIdVendido/:idToro',toroController.UpdateToroVendido)
+route.delete('/cliente/:id',clienteController.deleteCliente)
+route.get('/clienteId/:id',clienteController.GetClienteId)
+route.post('/cliente/:idCliente',multer,clienteController.UpdateCliente)
+
 
 module.exports= route;
