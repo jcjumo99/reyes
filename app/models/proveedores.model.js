@@ -1,8 +1,8 @@
-const clienteModel = {};
+const proveedoresModel = {};
 const mysql = require ('../connection/mysql')
 
-clienteModel.getCliente = async()=>{
-    const sql = 'call sp_getClientes';
+proveedoresModel.getProveedores = async()=>{
+    const sql = 'call sp_getProveedores';
     const promise = new Promise ((resolve,reject)=>{
         mysql.query(sql,[],(err,result)=>{
             if(err)
@@ -18,9 +18,9 @@ clienteModel.getCliente = async()=>{
     })
 }
 
-clienteModel.getClienteId = async (request)=>{
+proveedoresModel.getProveedoresId = async (request)=>{
     const {id} = request
-    const sql = 'call sp_getClienteId (?)'
+    const sql = 'call sp_getProveedorId (?)'
     const query = [id]
     const promise = new Promise((resolve,reject)=>{
         mysql.query(sql,query,(err,result)=>{
@@ -36,9 +36,9 @@ clienteModel.getClienteId = async (request)=>{
         return err;
     })
 }
-clienteModel.createCliente = async(request)=>{
+proveedoresModel.createProveedor = async(request)=>{
     const {direccion,telefono,nombres,apellidos} = request
-    const sql = 'call sp_createCliente (?,?,?,?)';
+    const sql = 'call sp_createProveedor (?,?,?,?)';
     const query = [direccion,telefono,nombres,apellidos]
     const promise = new Promise ((resolve,reject)=>{
         mysql.query(sql,query,(err,result)=>{
@@ -54,13 +54,13 @@ clienteModel.createCliente = async(request)=>{
         return err;
     })
 }
-clienteModel.updateCliente = async(request1,request2)=>{
+proveedoresModel.updateProveedor = async(request1,request2)=>{
     console.log(request1)
 
     const {direccion,telefono,nombres,apellidos} = request1
-    const {idCliente}=request2
-    const sql = 'call sp_editCliente (?,?,?,?,?)';
-    const query = [idCliente,direccion,telefono,nombres,apellidos]
+    const {idProveedor}=request2
+    const sql = 'call sp_editProveedor (?,?,?,?,?)';
+    const query = [idProveedor,direccion,telefono,nombres,apellidos]
     console.log(query)
     const promise = new Promise ((resolve,reject)=>{
         mysql.query(sql,query,(err,result)=>{
@@ -76,9 +76,9 @@ clienteModel.updateCliente = async(request1,request2)=>{
         return err;
     })
 }
-clienteModel.deleteCliente = (req,res) =>{
+proveedoresModel.deleteProveedor = (req,res) =>{
     const {id} = req;
-    const sql = 'call sp_deleteCliente (?)';
+    const sql = 'call sp_deleteProveedor (?)';
     
     const promise = new Promise ((resolve,reject)=>{
         mysql.query(sql,[id],(err,result)=>{
@@ -96,4 +96,4 @@ clienteModel.deleteCliente = (req,res) =>{
 
 
 }
-module.exports = clienteModel;
+module.exports = proveedoresModel;
