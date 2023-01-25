@@ -47,6 +47,7 @@ const Ganados = () => {
     }
   };
 
+  
   const displayToros = ganados.slice(pagesVisited, pagesVisited + toroPage);
 
   const eliminarModal = async (id) => {

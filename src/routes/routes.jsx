@@ -4,6 +4,7 @@ import { Ganados, Cobranza ,Clientes, Proveedores, Compras} from "../pages";
 import { BarraMenu } from "../components/common/barraMenu";
 import NuevoGanado from "../pages/ganado/nuevoGanado";
 import NuevoCliente from "../pages/cliente/nuevoCliente";
+import NuevaVenta from "../pages/cobranza/nuevaVenta";
 import NuevoProveedor from "../pages/proveedores/nuevoProveedor";
 import EditarGanado from "../pages/ganado/editarGanado"
 import EditarCliente from "../pages/cliente/editarCliente"
@@ -15,6 +16,7 @@ export const Ruta = (
       <Routes>
         <Route exact={true} path="/cobranza" element={<Cobranza />} />
         <Route exact={true} path="/compras" element={<Compras />} />
+        <Route exact={true} path="/nuevaVenta" element={<NuevaVenta/>} />
         <Route exact={true} path="/clientes" element={<Clientes />} />
         <Route exact={true} path="/proveedor" element={<Proveedores />} />
         <Route exact={true} path="/NuevoCliente" element={<NuevoCliente/>} />
