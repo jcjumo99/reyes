@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import { Ganados, Cobranza ,Clientes, Proveedores} from "../pages";
+import { Ganados, Cobranza ,Clientes, Proveedores, Compras} from "../pages";
 import { BarraMenu } from "../components/common/barraMenu";
 import NuevoGanado from "../pages/ganado/nuevoGanado";
 import NuevoCliente from "../pages/cliente/nuevoCliente";
@@ -14,6 +14,7 @@ export const Ruta = (
     <BarraMenu>
       <Routes>
         <Route exact={true} path="/cobranza" element={<Cobranza />} />
+        <Route exact={true} path="/compras" element={<Compras />} />
         <Route exact={true} path="/clientes" element={<Clientes />} />
         <Route exact={true} path="/proveedor" element={<Proveedores />} />
         <Route exact={true} path="/NuevoCliente" element={<NuevoCliente/>} />
