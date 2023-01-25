@@ -21,36 +21,43 @@ cobranzaController.getCobranza = async (req,res)=>{
 //         return res.json(response.success("ganado id ",toro,"200"))
 //     }
 // }
-// cobranzaController.CreateCliente = async (req,res)=>{
-//     const {direccion,telefono,nombres,apellidos} = req.body;
-//     console.log(req.body)
-//         if(direccion && telefono && nombres && apellidos ){
-           
-//             await clienteModel.createCliente(req.body);
-//             return res.json(response.success("cliente creado",req.body,"200"))
-//         }else{
-//             return res.status(400).json(response.error('faltan campos',{},"400"));   
-//         };
+cobranzaController.CreateCobranza = async (req,res)=>{
+    const {cliente,cantidad,estado,pago,peso,precioKilo,total} = req.body;
+    console.log(req.body)
+        if(cliente,cantidad,estado,pago,peso,precioKilo,total){
+            await cobranzaModel.createCobranza(req.body);
+            return res.json(response.success("venta creado",req.body,"200"))
+        }else{
+            return res.status(400).json(response.error('faltan campos',{},"400"));   
+        };
     
-//}
-// toroController.UpdateToro = async (req,res)=>{
-//     const {color,peso,numero,estado} = req.body;
-//     console.log(req.body)
-//     const {idToro} = req.params;
-//         if( color &&  peso && numero && estado ){
-//             console.log("1",req.body)
-//             //req.body.imagen = filename;
-//             //req.body.idToro = req.params;
-//             console.log("2",req.body)
-//             await toroModel.updateToro(req.body,req.params);
-//             return res.json(response.success("ganado actualizado",req.body,"200"))
-//         }else{
-//             console.log("else")
-//             return res.status(400).json(response.error('faltan campos',{},"400"));   
-//         };
+}
+
+cobranzaController.CreatePago = async (req,res)=>{
+    const {idVenta,pago} = req.body;
+    console.log(req.body)
+        if(idVenta,pago){
+            await cobranzaModel.createpago(req.body);
+            return res.json(response.success("pago creado",{},"200"))
+        }else{
+            return res.status(400).json(response.error('faltan campos',{},"400"));   
+        };
+    
+}
+cobranzaController.getDetalleCobranza = async (req,res)=>{
+    console.log(req)
+    const {idcobranza} = req.body;
+    console.log()
+        if(idcobranza){
+           const respuesta =  await cobranzaModel.getDetalleCobranza(req.body);
+            return res.json(response.success("detalle list",respuesta,"200"))
+        }else{
+            console.log("else")
+            return res.status(400).json(response.error('faltan campos',{},"400"));   
+        };
   
     
-// }
+}
 
 // toroController.deleteToro = async (req,res)=>{
 //     console.log(req.params)
