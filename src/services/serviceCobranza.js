@@ -6,13 +6,15 @@ const URI = 'http://localhost:4000'
 const getAll = async () => {
     return await axios.get(`${URI}/cobranza`);
 }
-// const createCliente = async (body)=>{
-//     return await axios.post(`${URI}/cliente`,body)
-// }
-// const deleteGanado = async (id)=>{
-//     return await axios.delete(`${URI}/toro/${id}`)
-// }
-
+const createCobranza = async (body)=>{
+    return await axios.post(`${URI}/cobranza`,body)
+}
+const getDetalleCobranza = async (body)=>{
+    return await axios.post(`${URI}/cobranzaDetalle`,body)
+}
+const createPago = async (body)=>{
+    return await axios.post(`${URI}/pago`,body)
+}
 // const getId = async (id)=>{
 //     return await axios.get(`${URI}/toroId/${id}`)
 // }
@@ -21,4 +23,4 @@ const getAll = async () => {
 // }
 
 
-export default {getAll}
+export default {getAll,createCobranza,getDetalleCobranza,createPago}
