@@ -7,6 +7,7 @@ const path = require ('path');
 //imports
 const toroRoute = require('./routes/toro.route')
 const clienteRoute = require('./routes/cliente.route')
+const cobranzaRoute = require('./routes/cobranza.route')
 const proveedoresRoute = require('./routes/proveedor.route')
 const comprasRoute = require('./routes/compras.route')
 
@@ -22,6 +23,7 @@ app.use(cors());
 //Routes
 app.use(toroRoute);
 app.use(clienteRoute);
+app.use(cobranzaRoute)
 app.use(proveedoresRoute);
 app.use(comprasRoute);
 
