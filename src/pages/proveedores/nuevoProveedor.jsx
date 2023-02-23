@@ -38,12 +38,10 @@ const NuevoProveedor = () => {
       apellidos:apellidos,
     }
     const respuesta = await servicesProveedores.createProveedor(proveedor);
-    console.log(respuesta)
     toast.success("Se creo correctamente");
      reset();
   }
   const reset = () => {
-    console.log("rest")
     setNombres("");
     setApellidos("");
     setDireccion("");

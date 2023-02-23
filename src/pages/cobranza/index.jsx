@@ -41,7 +41,6 @@ const Cobranza = () => {
 
   const getCobranza = async () => {
     const response = await serviceCobranza.getAll();
-    console.log(response);
     if (response.status === 200) {
       setCobranzaTotal(response.data.data);
       setCobranza(response.data.data);
@@ -57,6 +56,10 @@ const Cobranza = () => {
     setPago("")
     setModalDetalle(false);
   }
+  function closeModalEliminar() {
+    //setIsOpen(false);
+    setIsOpen(false)
+  }
   const eliminar = async () => {
     // await servicesGanado.deleteGanado(idToro);
     // getToros();
@@ -69,7 +72,6 @@ const Cobranza = () => {
     const detalle = { idcobranza: id };
     const respuesta = await serviceCobranza.getDetalleCobranza(detalle);
     setDetallePago(respuesta.data.data);
-    console.log(respuesta);
     setModalDetalle(true);
   };
 
@@ -94,7 +96,6 @@ const Cobranza = () => {
     }
     const pagoVenta = {idVenta:idCobranza,pago:pago}
     const respuesta = await serviceCobranza.createPago(pagoVenta);
-    console.log("res",respuesta)
     if(respuesta.status == 200 ){
       toast.success("se Pago COrrectamente")
       getCobranza();
@@ -128,7 +129,7 @@ const Cobranza = () => {
               <button
                 className="btn-primary"
                 style={{ borderRadius: "5px" }}
-                onClick={closeModal}
+                onClick={closeModalEliminar}
               >
                 cancelar
               </button>

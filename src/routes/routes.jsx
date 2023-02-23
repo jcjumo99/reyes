@@ -1,5 +1,6 @@
-import * as React from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import *  as React   from "react";
+//import  { useState, useEffect, useRef } from "react";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import { Ganados, Cobranza ,Clientes, Proveedores} from "../pages";
 import { BarraMenu } from "../components/common/barraMenu";
 import NuevoGanado from "../pages/ganado/nuevoGanado";
@@ -9,23 +10,42 @@ import NuevoProveedor from "../pages/proveedores/nuevoProveedor";
 import EditarGanado from "../pages/ganado/editarGanado"
 import EditarCliente from "../pages/cliente/editarCliente"
 import EditarProveedor from "../pages/proveedores/editarProveedor"
+import RequireAuth from "../pages/login/requireAuth";
+import Login from "../pages/login/index";
+import BarraTitulo from "../components/common/barraTitulo";
+import { SidebarLayout } from "../components/common/sidebarLayout";
+
 
 export const Ruta = (
-  <React.Fragment>
-    <BarraMenu>
-      <Routes>
-        <Route exact={true} path="/cobranza" element={<Cobranza />} />
-        <Route exact={true} path="/nuevaVenta" element={<NuevaVenta/>} />
-        <Route exact={true} path="/clientes" element={<Clientes />} />
-        <Route exact={true} path="/proveedor" element={<Proveedores />} />
-        <Route exact={true} path="/NuevoCliente" element={<NuevoCliente/>} />
-        <Route exact={true} path="/nuevoProveedor" element={<NuevoProveedor/>} />
-        <Route exact={true} path="/nuevoGanado" element={<NuevoGanado />} />
-        <Route exact={true} path="/editarGanado/:id" element={<EditarGanado />} />
-        <Route exact={true} path="/editarCliente/:id" element={<EditarCliente />} />
-        <Route exact={true} path="/editarProveedor/:id" element={<EditarProveedor/>} />
-        <Route path="/" element={<Ganados />} />
-      </Routes>
-    </BarraMenu>
-  </React.Fragment>
-);
+
+    <Routes>
+      <Route exact={true} path="/" element={<SidebarLayout/>}>
+        <Route index element={
+          <RequireAuth><Cobranza/></RequireAuth>}/>
+        <Route exact={true} path="/proveedor" element={
+          <RequireAuth><Proveedores/></RequireAuth>}/>
+          <Route exact={true} path="/ganados" element={
+          <RequireAuth><Ganados/></RequireAuth>}/>
+        <Route exact={true} path="/cobranza"  element={
+          <RequireAuth><Cobranza/></RequireAuth>}/>
+        <Route exact={true} path="/nuevaVenta" element={
+          <RequireAuth><NuevaVenta/></RequireAuth>}/>
+        <Route exact={true} path="/clientes" element={
+          <RequireAuth><Clientes/></RequireAuth>}/>
+        <Route exact={true} path="/NuevoCliente" element={
+          <RequireAuth><NuevoCliente/></RequireAuth>}/>
+        <Route exact={true} path="/nuevoProveedor" element={
+          <RequireAuth><NuevoProveedor/></RequireAuth>}/>
+        <Route exact={true} path="/nuevoGanado" element={
+          <RequireAuth><NuevoGanado/></RequireAuth>}/>
+        <Route exact={true} path="/editarGanado/:id" element={
+          <RequireAuth><EditarGanado/></RequireAuth>}/>
+        <Route exact={true} path="/editarCliente/:id" element={
+          <RequireAuth><EditarCliente/></RequireAuth>}/>
+        <Route exact={true} path="/editarProveedor/:id" element={
+          <RequireAuth><EditarProveedor/></RequireAuth>}/>
+      </Route>  
+        <Route exact={true} path="/login" element={<Login/>}/> 
+    </Routes>
+  
+  );

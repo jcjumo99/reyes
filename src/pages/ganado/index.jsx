@@ -40,7 +40,6 @@ const Ganados = () => {
 
   const getToros = async () => {
     const response = await servicesGanado.getAll();
-    console.log(response);
     if (response.status === 200) {
       setGanadosTotal(response.data.data);
       setGanado(response.data.data);
@@ -72,7 +71,7 @@ const Ganados = () => {
   };
 
   const pageCount = Math.ceil(ganadosTotal.length / toroPage);
-
+  
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };

@@ -41,7 +41,6 @@ const EditarGanado = () => {
   const guardarGanado = async () => {
   
     if(numero.length == 0){
-      console.log("if")
       toast.error("Complete el campo Número");
       return
     }

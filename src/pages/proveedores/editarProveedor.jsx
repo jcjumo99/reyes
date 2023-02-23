@@ -41,7 +41,7 @@ const EditarProveedor = () => {
     const guardarProveedor = async () => {
     
       if(nombres.length == 0){
-        // console.log("if")
+
         toast.error("Complete el campo Nombres");
         return
       }
@@ -63,7 +63,6 @@ const EditarProveedor = () => {
         nombres:nombres,
         apellidos:apellidos,
       }
-    //   console.log(cliente)
   
       const respuesta = await servicesProveedores.updateProveedor(proveedorId,proveedor);
       if(respuesta.status == 200){

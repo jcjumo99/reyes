@@ -47,7 +47,6 @@ const NuevoGanado = () => {
      reset();
   }
   const reset = () => {
-    console.log("rest")
     setNumero("");
     setEstado("Disponible");
     setColor("");

@@ -43,7 +43,6 @@ const EditarCliente = () => {
   const guardarCliente = async () => {
   
     if(nombres.length == 0){
-      console.log("if")
       toast.error("Complete el campo Nombres");
       return
     }
@@ -65,7 +64,6 @@ const EditarCliente = () => {
       nombres:nombres,
       apellidos:apellidos,
     }
-    console.log(cliente)
 
     const respuesta = await servicesCliente.updateCliente(clienteId,cliente);
     if(respuesta.status == 200){

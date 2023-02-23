@@ -40,7 +40,6 @@ const Clientes = () => {
 
   const getClientes = async () => {
     const response = await servicesCliente.getAll();
-    console.log("rss",response);
     if (response.status === 200) {
       setClientesTotal(response.data.data);
       setCliente(response.data.data);
@@ -54,7 +53,6 @@ const Clientes = () => {
   };
 
   const eliminar = async ()=>{
-    console.log(idCliente)
     await servicesCliente.deleteCliente(idCliente);
     getClientes();
     setIsOpen(false);

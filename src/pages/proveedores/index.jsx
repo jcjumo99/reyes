@@ -41,7 +41,6 @@ const Proveedores = () => {
 
   const getProveedores = async () => {
     const response = await servicesProveedores.getAll();
-    console.log("rss",response);
     if (response.status === 200) {
       setProveedoresTotal(response.data.data);
       setProveedores(response.data.data);
@@ -50,13 +49,11 @@ const Proveedores = () => {
   const displayProveedores = proveedores.slice(pagesVisited, pagesVisited + ProveedoresPage);
 
   const eliminarModal = async (id) => {
-    console.log("id",id)
     setIsOpen(true);
     setIdProveedores(id)
   };
 
   const eliminar = async ()=>{
-    console.log(idProveedores)
     await servicesProveedores.deleteProveedor(idProveedores);
     getProveedores();
     setIsOpen(false);

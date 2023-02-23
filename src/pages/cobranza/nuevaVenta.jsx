@@ -26,13 +26,10 @@ const NuevaVenta = () => {
     }
   }, []);
   const getClientes = async () => {
-    console.log("clientes");
     const respuesta = await servicesCliente.getAll();
-    console.log(respuesta.data.data);
     setCliente(respuesta.data.data);
   };
   const selectClient =(e)=>{
-    console.log("cliente",e)
     setIdCliente(e)
   }
   const onchangePeso = (e)=>{
@@ -73,9 +70,6 @@ const NuevaVenta = () => {
       pago:pago,
       estado: estado == true ? 1 : 0,
     };
-
-    console.log(venta)
-
     if(estado == false){
       if(pago == total){
         await serviceCobranza.createCobranza(venta)
@@ -89,18 +83,8 @@ const NuevaVenta = () => {
       await serviceCobranza.createCobranza(venta)
       toast.success("Se vendio correctamente");
     }
-    // const respuesta = await servicesCliente.createCliente(cliente);
-    // console.log(respuesta);
-    // toast.success("Se creo correctamente");
-    // reset();
+
   };
-  // const reset = () => {
-  //   console.log("rest");
-  //   setNombres("");
-  //   setCantidad("");
-  //   setPeso("");
-  //   setTotal("");
-  // };
 
   return (
     <Container>

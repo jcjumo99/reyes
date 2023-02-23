@@ -38,12 +38,10 @@ const NuevoCliente = () => {
       apellidos:apellidos,
     }
     const respuesta = await servicesCliente.createCliente(cliente);
-    console.log(respuesta)
     toast.success("Se creo correctamente");
      reset();
   }
   const reset = () => {
-    console.log("rest")
     setNombres("");
     setApellidos("");
     setDireccion("");
