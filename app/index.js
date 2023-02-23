@@ -10,6 +10,7 @@ const clienteRoute = require('./routes/cliente.route')
 const cobranzaRoute = require('./routes/cobranza.route')
 const proveedoresRoute = require('./routes/proveedor.route')
 const comprasRoute = require('./routes/compras.route')
+const userRoute = require('./routes/user.route')
 
 //connection
 require('./connection/mysql');
@@ -26,6 +27,7 @@ app.use(clienteRoute);
 app.use(cobranzaRoute)
 app.use(proveedoresRoute);
 app.use(comprasRoute);
+app.use(userRoute);
 
 
 //app.use('/public',express.static())
