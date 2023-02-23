@@ -1,7 +1,6 @@
-import *  as React   from "react";
-//import  { useState, useEffect, useRef } from "react";
-import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
-import { Ganados, Cobranza ,Clientes, Proveedores} from "../pages";
+import * as React from "react";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Ganados, Cobranza ,Clientes, Proveedores, Compras} from "../pages";
 import { BarraMenu } from "../components/common/barraMenu";
 import NuevoGanado from "../pages/ganado/nuevoGanado";
 import NuevoCliente from "../pages/cliente/nuevoCliente";
